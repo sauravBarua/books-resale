@@ -6,12 +6,13 @@ const NavbarContainer = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="/">Books’n’Things</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/"></Link>
+            <Link to="/">Home</Link>
             <Link to="/product">Add Product</Link>
+            <Link to="/blog">Blog</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
