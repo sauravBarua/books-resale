@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 
 const AddProduct = () => {
-  const [product, setProduct] = useState([]);
-  const [category, setCategory] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -27,6 +26,25 @@ const AddProduct = () => {
       desc,
     };
     console.log(product);
+
+    fetch("http://localhost:8000/categories", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const newProduct = [...products, data];
+        setProducts(newProduct);
+        alert("Add Product");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    // e.target.reset();
   };
   return (
     <div>
@@ -84,10 +102,8 @@ const AddProduct = () => {
             style={{ height: "100px" }}
           />
           <label>Enter category </label>
-          <select name="category" onChange={(e) => setCategory(e.target.value)}>
-            <option value="computer">
-              Computer programming Books
-            </option>
+          <select name="category" onChange={(e) => e.target.value}>
+            <option value="computer">Computer programming Books</option>
             <option value="comic">Comic Books</option>
             <option value="music">Music Books</option>
           </select>
