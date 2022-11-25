@@ -27,7 +27,7 @@ const AddProduct = () => {
     };
     console.log(product);
 
-    fetch("http://localhost:8000/categories", {
+    fetch("http://localhost:5000/categories", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
