@@ -5,12 +5,13 @@ const Category = () => {
   const [categories, setCategories] = useState({});
   const location = useLocation();
   const { category } = location.state;
+  console.log(category);
 
   useEffect(() => {
     fetch(`http://localhost:8000/categories?category=${category}`)
       .then((res) => res.json())
       .then((data) => setCategories(data));
-  }, [categories]);
+  }, [category?.categories]);
   return (
     <div>
       <h1>Category page: {categories.length} </h1>{" "}
