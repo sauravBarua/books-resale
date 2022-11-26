@@ -13,6 +13,7 @@ const NavbarContainer = () => {
             <Link to="/">Home</Link>
             <Link to="/product">Add Product</Link>
             <Link to="/blog">Blog</Link>
+            <Link to="/categorypage">Category</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
