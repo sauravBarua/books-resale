@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 
 const Signup = () => {
-  // const { createUser } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -12,6 +12,13 @@ const Signup = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, email, password);
+
+    createUser(email, password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((e) => console.error(e));
   };
   return (
     <div className="w-50 mx-auto">
