@@ -14,6 +14,7 @@ const NavbarContainer = () => {
             <Link to="/product">Add Product</Link>
             <Link to="/blog">Blog</Link>
             <Link to="/categorypage">Category</Link>
+            <Link to="/login">Login</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
