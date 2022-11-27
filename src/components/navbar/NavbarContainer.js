@@ -26,6 +26,7 @@ const NavbarContainer = () => {
             <Link to="/product">Add Product</Link>
             <Link to="/blog">Blog</Link>
             <Link to="/categorypage">Category</Link>
+            <Link to="/dashboard">Dashboard</Link>
             {user?.uid ? (
               <Link
                 className="link"

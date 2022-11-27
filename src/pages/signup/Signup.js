@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 
@@ -20,6 +21,7 @@ const Signup = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        toast("User Created Successfully!")
         handleUpdatUserProfile(name, photoURL);
         navigate("/", { replace: true });
       })
