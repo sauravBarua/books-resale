@@ -14,7 +14,8 @@ const Signup = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    const role = form.role.value;
+    // console.log(name, email, password, type);
 
     createUser(email, password)
       .then((res) => {
@@ -23,6 +24,7 @@ const Signup = () => {
         toast("User Created Successfully!");
         const userInfo = {
           displayName: name,
+          role,
         };
         updateUserProfile(userInfo)
           .then(() => {
@@ -33,8 +35,8 @@ const Signup = () => {
       .catch((e) => console.error(e));
   };
 
-  const saveUser = (name, email) => {
-    const user = { name, email };
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -66,6 +68,12 @@ const Signup = () => {
             placeholder="Password"
           />
         </Form.Group>
+        <label>Enter account type </label>
+        <select name="role" onChange={(e) => e.target.value}>
+          <option value="buyer">Buyer</option>
+          <option value="seller">Seller</option>
+        </select>
+        <br />
         <Button variant="primary" type="submit">
           Signup
         </Button>
