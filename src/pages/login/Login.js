@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, ButtonGroup, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 
 const Login = () => {
-  const handleSignin = () => {};
+  const {login } = useContext(AuthContext);
+
+  const handleSignin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    login(email, password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        form.reset();
+      })
+      .catch((e) => console.log(e));
+  };
   return (
     <div className="w-50 mx-auto">
       <h3 className="text-dark  mb-4 ">Login</h3>
