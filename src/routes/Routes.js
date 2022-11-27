@@ -9,6 +9,7 @@ import Category from "../pages/category/Category";
 import CategoryPage from "../pages/categoryPage/CategoryPage";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Login from "../pages/login/Login";
+import Seller from "../pages/seller/Seller";
 import Signup from "../pages/signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 
@@ -56,8 +57,12 @@ export const routes = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard",
+        path: "/dashboard/buyers",
         element: <Buyer></Buyer>,
+      },
+      {
+        path: "/dashboard/sellers",
+        element: <Seller></Seller>,
       },
     ],
   },

@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import NavbarContainer from "../../components/navbar/NavbarContainer";
 import Footer from "../../shared/footer/Footer";
 
@@ -14,8 +14,12 @@ const DashboardLayout = () => {
           <div className="vh-100 col-lg-2 col-md-3 col-sm-4 col-xs-12 position-absolute top-0 start-0 shadow p-3 bg-body">
             {/* <AppDrawer /> */}
             <ul>
-              <li>Item 1</li>
-              <li>Item 2</li>
+              <li>
+                <Link to="/dashboard/buyers">Buyers</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/sellers">Sellers</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -29,8 +33,6 @@ const DashboardLayout = () => {
             </Col>
           </Row>
         </Container>
-
-        <Footer></Footer>
       </div>
     </>
   );
