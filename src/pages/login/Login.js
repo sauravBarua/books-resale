@@ -3,9 +3,12 @@ import { Button, ButtonGroup, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, providerLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+
   const navigate = useNavigate();
 
   const handleSignin = (e) => {
@@ -22,6 +25,19 @@ const Login = () => {
       })
       .catch((e) => console.log(e));
   };
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        navigate("/", { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="w-50 mx-auto">
       <h3 className="text-dark  mb-4 ">Login</h3>
@@ -49,7 +65,7 @@ const Login = () => {
         <Form.Text className="text-danger"></Form.Text>
       </Form>
       <ButtonGroup vertical className="mt-2">
-        <Button variant="primary">
+        <Button onClick={handleGoogleSignIn} variant="primary">
           <FaGoogle className="m-2"></FaGoogle>
           Login With Google
         </Button>
