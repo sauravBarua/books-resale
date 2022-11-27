@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, Col, Container, Nav, Navbar, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
 import NavbarContainer from "../../components/navbar/NavbarContainer";
 import Footer from "../../shared/footer/Footer";

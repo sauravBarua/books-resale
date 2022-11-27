@@ -12,42 +12,47 @@ const Signup = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photoURL, email, password);
+    console.log(name, email, password);
 
     createUser(email, password)
       .then((res) => {
         const user = res.user;
         console.log(user);
-        toast("User Created Successfully!")
-        handleUpdatUserProfile(name, photoURL);
-        navigate("/", { replace: true });
+        toast("User Created Successfully!");
+        const userInfo = {
+          displayName: name,
+        };
+        updateUserProfile(userInfo)
+          .then(() => {
+            saveUser(name, email);
+          })
+          .catch((e) => console.error(e));
       })
       .catch((e) => console.error(e));
   };
 
-  const handleUpdatUserProfile = (name, photoURL) => {
-    const profile = {
-      displayName: name,
-      photoURL: photoURL,
-    };
-    updateUserProfile(profile)
-      .then(() => {})
-      .catch((error) => console.error(error));
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        navigate("/");
+      });
   };
+
   return (
     <div className="w-50 mx-auto">
       <h3 className="text-dark mb-4 ">Please Signup</h3>
       <Form onSubmit={handleSignup}>
-        <Form.Group className="mb-3">
-          <Form.Control
-            name="photoURL"
-            type="text"
-            placeholder="Enter photoURL"
-          />
-        </Form.Group>
         <Form.Group className="mb-3">
           <Form.Control name="name" type="text" placeholder="Enter name" />
         </Form.Group>
