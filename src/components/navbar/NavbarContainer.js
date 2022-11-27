@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 
 const NavbarContainer = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        navigate("/", { replace: true });
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -14,7 +26,23 @@ const NavbarContainer = () => {
             <Link to="/product">Add Product</Link>
             <Link to="/blog">Blog</Link>
             <Link to="/categorypage">Category</Link>
-            <Link to="/login">Login</Link>
+            {user?.uid ? (
+              <Link
+                className="link"
+                style={{ textDecoration: "none" }}
+                onClick={handleLogout}
+              >
+                Log out
+              </Link>
+            ) : (
+              <Link
+                className="link"
+                style={{ textDecoration: "none" }}
+                to="/login"
+              >
+                Login
+              </Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

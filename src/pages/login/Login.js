@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { Button, ButtonGroup, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 
 const Login = () => {
-  const {login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignin = (e) => {
     e.preventDefault();
@@ -17,6 +18,7 @@ const Login = () => {
         const user = res.user;
         console.log(user);
         form.reset();
+        navigate("/", { replace: true });
       })
       .catch((e) => console.log(e));
   };
