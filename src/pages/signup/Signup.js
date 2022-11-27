@@ -24,11 +24,10 @@ const Signup = () => {
         toast("User Created Successfully!");
         const userInfo = {
           displayName: name,
-          role,
         };
         updateUserProfile(userInfo)
           .then(() => {
-            saveUser(name, email);
+            saveUser(name, email,role);
           })
           .catch((e) => console.error(e));
       })
