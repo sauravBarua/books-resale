@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,6 +7,15 @@ import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 const NavbarContainer = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const { data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/users");
+      const data = await res.json();
+      return data;
+    },
+  });
 
   const handleLogout = () => {
     logOut()
@@ -22,11 +32,12 @@ const NavbarContainer = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/">Home</Link>
-            <Link to="/product">Add Product</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/categorypage">Category</Link>
-            <Link to="/dashboard">Dashboard</Link>
+            {user?.uid &&
+              users.map((user, i) => (
+                <p key={user._id}>{user.role === "admin" && <>admin</>}</p>
+              ))}
+          </Nav>
+          <Nav className="me-auto">
             {user?.uid ? (
               <Link
                 className="link"
