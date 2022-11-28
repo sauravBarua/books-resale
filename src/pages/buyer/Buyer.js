@@ -1,17 +1,30 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Table } from "react-bootstrap";
 
 const Buyer = () => {
+  const { data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/users");
+      const data = await res.json();
+      return data;
+    },
+  });
   return (
     <div>
       <h1>Buyer</h1>
-      <Table striped bordered hover>
+
+      {users.map(
+        (user, i) => user.role === "buyer" && <p key={user.id}> {user.name} </p>
+      )}
+      {/* <Table striped bordered hover>
         <thead>
           <tr>
             <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -21,19 +34,8 @@ const Buyer = () => {
             <td>Otto</td>
             <td>@mdo</td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
         </tbody>
-      </Table>
+      </Table> */}
     </div>
   );
 };

@@ -25,7 +25,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/product",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blog",
