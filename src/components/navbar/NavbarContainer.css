@@ -1,0 +1,28 @@
+.header {
+  padding: 35px;
+  text-align: center;
+  background: rgb(246, 247, 249);
+  color: #3f4342;
+  font-size: 45px;
+  font-family: "Sofia", sans-serif;
+  text-shadow: 3px 3px 3px #ababab;
+}
+.headerNav {
+  font-family: "Sofia", sans-serif;
+  font-size: 20px;
+}
+.headerLink {
+  text-decoration: none;
+  color: white;
+}
+.link {
+  margin: 0px 16px;
+  color: black;
+}
+
+.navbar {
+  text-align: center;
+}
+.nav {
+  margin: auto;
+}

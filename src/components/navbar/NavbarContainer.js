@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
+import "./NavbarContainer.css"
 
 const NavbarContainer = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -32,10 +33,36 @@ const NavbarContainer = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            {user?.uid &&
-              users.map((user, i) => (
-                <p key={user._id}>{user.role === "admin" && <>admin</>}</p>
-              ))}
+            <Link className="link" style={{ textDecoration: "none" }} to="/">
+              Home
+            </Link>
+            <Link
+              className="link"
+              style={{ textDecoration: "none" }}
+              to="/dashboard"
+            >
+              Dashbord
+            </Link>
+            <Link className="link" style={{ textDecoration: "none" }} to="">
+              My orders
+            </Link>
+            <Link
+              className="link"
+              style={{ textDecoration: "none" }}
+              to="/product"
+            >
+              Add product
+            </Link>
+            <Link className="link" style={{ textDecoration: "none" }} to="">
+              My Products
+            </Link>
+            <Link
+              className="link"
+              style={{ textDecoration: "none" }}
+              to="/blog"
+            >
+              Blog
+            </Link>
           </Nav>
           <Nav className="me-auto">
             {user?.uid ? (

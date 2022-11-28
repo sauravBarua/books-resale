@@ -15,10 +15,17 @@ const DashboardLayout = () => {
             {/* <AppDrawer /> */}
             <ul>
               <li>
-                <Link to="/dashboard/buyers">Buyers</Link>
+                <Link style={{ textDecoration: "none" }} to="/dashboard/buyers">
+                  Buyers
+                </Link>
               </li>
               <li>
-                <Link to="/dashboard/sellers">Sellers</Link>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to="/dashboard/sellers"
+                >
+                  Sellers
+                </Link>
               </li>
             </ul>
           </div>
