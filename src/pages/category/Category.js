@@ -16,7 +16,6 @@ const Category = () => {
   return (
     <div>
       <h1>Category page: {console.log(categories)} </h1>{" "}
-      {/* {categories.map((category) => console.log(category.category))} */}
       {categories.length > 0 ? (
         categories.map((category) => (
           <CategoryCard key={category.id} data={category}></CategoryCard>

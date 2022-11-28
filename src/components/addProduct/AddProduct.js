@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
+import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 
 const AddProduct = () => {
   const [products, setProducts] = useState([]);
+
+  const { user } = useContext(AuthContext);
+
+  console.log(user.email);
 
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -15,6 +20,8 @@ const AddProduct = () => {
     const location = form.location.value;
     const category = form.category.value;
     const desc = form.desc.value;
+    const email = form.email.value;
+
     const product = {
       title,
       img,
@@ -24,6 +31,7 @@ const AddProduct = () => {
       location,
       category,
       desc,
+      email,
     };
     console.log(product);
 
@@ -44,7 +52,7 @@ const AddProduct = () => {
       .catch((error) => {
         console.error(error);
       });
-    // e.target.reset();
+    e.target.reset();
   };
   return (
     <div>
@@ -107,6 +115,7 @@ const AddProduct = () => {
             <option value="comic">Comic Books</option>
             <option value="music">Music Books</option>
           </select>
+          <Form.Control name="email" defaultValue={user?.email} readOnly />
 
           <Button className="mt-3" variant="outline-dark" type="submit">
             Submit

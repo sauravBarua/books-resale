@@ -9,6 +9,7 @@ import Category from "../pages/category/Category";
 import CategoryPage from "../pages/categoryPage/CategoryPage";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Login from "../pages/login/Login";
+import MyProducts from "../pages/myProducts/MyProducts";
 import Seller from "../pages/seller/Seller";
 import Signup from "../pages/signup/Signup";
 import PrivateRoute from "./PrivateRoute";
@@ -45,6 +46,10 @@ export const routes = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup></Signup>,
+      },
+      {
+        path: "/myproducts",
+        element: <MyProducts></MyProducts>,
       },
     ],
   },

@@ -60,7 +60,7 @@ const NavbarContainer = () => {
             >
               Add product
             </Link>
-            <Link className="link" style={{ textDecoration: "none" }} to="">
+            <Link className="link" style={{ textDecoration: "none" }} to="/myproducts">
               My Products
             </Link>
             <Link
