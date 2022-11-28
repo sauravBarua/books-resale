@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
-import "./NavbarContainer.css"
+import "./NavbarContainer.css";
 
 const NavbarContainer = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -35,6 +35,13 @@ const NavbarContainer = () => {
           <Nav className="me-auto">
             <Link className="link" style={{ textDecoration: "none" }} to="/">
               Home
+            </Link>
+            <Link
+              className="link"
+              style={{ textDecoration: "none" }}
+              to="/categorypage"
+            >
+              Category
             </Link>
             <Link
               className="link"

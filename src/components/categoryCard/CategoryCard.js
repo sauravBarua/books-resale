@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button, Card, Modal } from "react-bootstrap";
 
 const CategoryCard = ({ data }) => {
-  const { img, title, price, mobile, location, category } = data;
+  const { img, title, price, condition, mobile, location, category, desc } =
+    data;
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
@@ -12,15 +13,19 @@ const CategoryCard = ({ data }) => {
     <div>
       <h1>Category {category} books </h1>
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+        <Card.Img variant="top" src={img} />
         <Card.Body>
-          <Card.Title> Seller's name </Card.Title>
+          <Card.Title> Seller's name: {} </Card.Title>
 
           <Card.Title> {title} </Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
+          <Card.Title> Price: $ {price} </Card.Title>
+          <Card.Title> Condition: {condition} </Card.Title>
+          <Card.Title> Location: {location} </Card.Title>
+
+          <Card.Title>Mobile: {mobile} </Card.Title>
+          <Card.Title> Category; {category} </Card.Title>
+
+          <Card.Text>{desc}</Card.Text>
           <Button variant="primary" onClick={handleShow}>
             Book now
           </Button>
