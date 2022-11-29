@@ -31,7 +31,7 @@ const MyProducts = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          refetch()
+          refetch();
         });
     }
   };
@@ -43,6 +43,7 @@ const MyProducts = () => {
           <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Advertised</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -50,8 +51,12 @@ const MyProducts = () => {
           {user?.email &&
             categories.map((category, i) => (
               <tr key={category._id}>
-                <td> {i+1} </td>
+                <td> {i + 1} </td>
                 <td> {category.title} </td>
+                <td>
+                  {" "}
+                  <button className="btn btn-primary">Submit</button>{" "}
+                </td>
                 <td>
                   <button
                     className="btn btn-danger"
