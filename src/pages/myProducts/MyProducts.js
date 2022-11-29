@@ -13,7 +13,7 @@ const MyProducts = () => {
   //     .then((data) => setProducts(data));
   // }, [user?.email]);
 
-  const { data: categories = [] } = useQuery({
+  const { data: categories = [], refetch } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/categories");
@@ -31,6 +31,7 @@ const MyProducts = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+          refetch()
         });
     }
   };

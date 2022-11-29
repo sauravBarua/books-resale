@@ -3,7 +3,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 
 const Buyer = () => {
-  const { data: users = [] } = useQuery({
+  const { data: users = [],refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/users");
@@ -21,6 +21,7 @@ const Buyer = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+          refetch()
         });
     }
   };
