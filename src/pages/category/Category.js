@@ -13,10 +13,15 @@ const Category = () => {
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, [category?.categories]);
-  
+
   return (
-    <div>
-      <h1>Category page: {console.log(categories)} </h1>{" "}
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       {categories.length > 0 ? (
         categories.map((category) => (
           <CategoryCard key={category.id} data={category}></CategoryCard>

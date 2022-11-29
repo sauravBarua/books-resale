@@ -36,6 +36,8 @@ const MyProducts = () => {
     }
   };
 
+  const handleAd = () => {};
+
   return (
     <div>
       <Table striped bordered hover>
@@ -55,7 +57,9 @@ const MyProducts = () => {
                 <td> {category.title} </td>
                 <td>
                   {" "}
-                  <button className="btn btn-primary">Submit</button>{" "}
+                  <button onClick={handleAd} className="btn btn-primary">
+                    Submit
+                  </button>{" "}
                 </td>
                 <td>
                   <button

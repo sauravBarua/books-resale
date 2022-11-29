@@ -24,11 +24,26 @@ const CategoryCard = ({ data }) => {
   };
 
   return (
-    <div>
-      <h1>Category {category} books </h1>
-      <Card style={{ width: "22rem", margin: "10px" }}>
+    <div style={{ marginTop: "25px" }}>
+      <Card
+        style={{
+          width: "359px",
+          height: "700px",
+          margin: "10px",
+          position: "relative",
+        }}
+      >
         <Card.Body>
-          <Card.Img variant="top" src={img} />
+          <Card.Img
+            style={{
+              width: "300px",
+              height: "360px",
+              textAlign: "center",
+              padding: "15px",
+            }}
+            variant="top"
+            src={img}
+          />
 
           <Card.Title> Seller's name: {} </Card.Title>
 
@@ -40,8 +55,12 @@ const CategoryCard = ({ data }) => {
           <Card.Title>Mobile: {mobile} </Card.Title>
           <Card.Title> Category: {category} </Card.Title>
 
-          <Card.Text>{desc}</Card.Text>
-          <Button variant="primary" onClick={handleShow}>
+          {/* <Card.Text>{desc}</Card.Text> */}
+          <Button
+            style={{ position: "absolute", bottom: "7px" }}
+            variant="primary"
+            onClick={handleShow}
+          >
             Book now
           </Button>
         </Card.Body>
