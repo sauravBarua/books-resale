@@ -13,6 +13,7 @@ const Category = () => {
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, [category?.categories]);
+  
   return (
     <div>
       <h1>Category page: {console.log(categories)} </h1>{" "}

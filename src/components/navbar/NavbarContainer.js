@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
@@ -9,14 +9,22 @@ const NavbarContainer = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const { data: users = [] } = useQuery({
-    queryKey: ["users"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
-      const data = await res.json();
-      return data;
-    },
-  });
+  const [users, setUsers] = useState([]);
+
+  // const { data: users = [] } = useQuery({
+  //   queryKey: ["users"],
+  //   queryFn: async () => {
+  //     const res = await fetch("http://localhost:5000/users");
+  //     const data = await res.json();
+  //     return data;
+  //   },
+  // });
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users`)
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  }, []);
 
   const handleLogout = () => {
     logOut()
@@ -36,6 +44,7 @@ const NavbarContainer = () => {
             <Link className="link" style={{ textDecoration: "none" }} to="/">
               Home
             </Link>
+
             <Link
               className="link"
               style={{ textDecoration: "none" }}
@@ -43,26 +52,7 @@ const NavbarContainer = () => {
             >
               Category
             </Link>
-            <Link
-              className="link"
-              style={{ textDecoration: "none" }}
-              to="/dashboard"
-            >
-              Dashbord
-            </Link>
-            <Link className="link" style={{ textDecoration: "none" }} to="">
-              My orders
-            </Link>
-            <Link
-              className="link"
-              style={{ textDecoration: "none" }}
-              to="/product"
-            >
-              Add product
-            </Link>
-            <Link className="link" style={{ textDecoration: "none" }} to="/myproducts">
-              My Products
-            </Link>
+
             <Link
               className="link"
               style={{ textDecoration: "none" }}
@@ -70,6 +60,38 @@ const NavbarContainer = () => {
             >
               Blog
             </Link>
+
+            {user?.uid &&
+              users.map(
+                (user, i) =>
+                  user?.role === "seller" && (
+                    <div key={i}>
+                      <Link
+                        className="link"
+                        style={{ textDecoration: "none" }}
+                        to="/product"
+                      >
+                        Add product
+                      </Link>
+                      <Link
+                        className="link"
+                        style={{ textDecoration: "none" }}
+                        to="/myproducts"
+                      >
+                        My Products
+                      </Link>
+                    </div>
+                  )
+              )}
+            {user?.email === "admin@admin.com" && (
+              <Link
+                className="link"
+                style={{ textDecoration: "none" }}
+                to="/dashboard"
+              >
+                Dashbord
+              </Link>
+            )}
           </Nav>
           <Nav className="me-auto">
             {user?.uid ? (

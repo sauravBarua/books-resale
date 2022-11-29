@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Button, Card, Modal } from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Button, Card, Form, InputGroup, Modal } from "react-bootstrap";
+import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 
 const CategoryCard = ({ data }) => {
   const { img, title, price, condition, mobile, location, category, desc } =
@@ -8,6 +9,8 @@ const CategoryCard = ({ data }) => {
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
+  const { user } = useContext(AuthContext);
 
   return (
     <div>
@@ -37,13 +40,38 @@ const CategoryCard = ({ data }) => {
           <Modal.Header closeButton>
             <Modal.Title>{title}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Body>
+            <Modal.Title>Price: $ {price}</Modal.Title>
+            <Modal.Title>Buyer name: {user.displayName}</Modal.Title>
+            <Modal.Title>Buyer name: {user.email}</Modal.Title>
+            <Form>
+              <Form.Group className="mb-3 ">
+                <Form.Control
+                  name="phone"
+                  type="text"
+                  placeholder="Enter Your phone number"
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Control
+                  name="location"
+                  type="test"
+                  placeholder="Enter meeting location"
+                  required
+                />
+              </Form.Group>
+
+              <Form.Text className="text-danger"></Form.Text>
+            </Form>
+          </Modal.Body>
+
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
             <Button variant="primary" onClick={handleClose}>
-              Save Changes
+              Book now
             </Button>
           </Modal.Footer>
         </Modal>
