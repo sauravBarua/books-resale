@@ -16,26 +16,30 @@ const Buyer = () => {
       <h1>Buyer</h1>
 
       {users.map(
-        (user, i) => user.role === "buyer" && <p key={user.id}> {user.name} </p>
+        (user, i) =>
+          user.role === "buyer" && (
+            <div key={i}>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {i-1} </td>
+                    <td> {user.name} </td>
+                    <td> {user.email} </td>
+                    <td>@mdo</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+          )
       )}
-      {/* <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
-      </Table> */}
     </div>
   );
 };

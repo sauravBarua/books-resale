@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { Table } from "react-bootstrap";
 
 const Seller = () => {
   const { data: users = [] } = useQuery({
@@ -15,7 +16,28 @@ const Seller = () => {
       <h1>seller</h1>
       {users.map(
         (user, i) =>
-          user.role === "seller" && <p key={user.id}> {user.name} </p>
+          user.role === "seller" && (
+            <div key={i}>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> {i - 1} </td>
+                    <td> {user.name} </td>
+                    <td> {user.email} </td>
+                    <td>@mdo</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+          )
       )}
     </div>
   );

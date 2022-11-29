@@ -9,7 +9,7 @@ const NavbarContainer = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
   // const { data: users = [] } = useQuery({
   //   queryKey: ["users"],
@@ -20,11 +20,11 @@ const NavbarContainer = () => {
   //   },
   // });
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/users`)
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/users`)
+  //     .then((res) => res.json())
+  //     .then((data) => setUsers(data));
+  // }, []);
 
   const handleLogout = () => {
     logOut()
@@ -60,7 +60,7 @@ const NavbarContainer = () => {
             >
               Blog
             </Link>
-
+            {/* 
             {user?.uid &&
               users.map(
                 (user, i) =>
@@ -82,7 +82,7 @@ const NavbarContainer = () => {
                       </Link>
                     </div>
                   )
-              )}
+              )} */}
             {user?.email === "admin@admin.com" && (
               <Link
                 className="link"
@@ -91,6 +91,24 @@ const NavbarContainer = () => {
               >
                 Dashbord
               </Link>
+            )}
+            {user?.email && (
+              <>
+                <Link
+                  className="link"
+                  style={{ textDecoration: "none" }}
+                  to="/product"
+                >
+                  Add product
+                </Link>
+                <Link
+                  className="link"
+                  style={{ textDecoration: "none" }}
+                  to="/myproducts"
+                >
+                  My Products
+                </Link>
+              </>
             )}
           </Nav>
           <Nav className="me-auto">

@@ -12,6 +12,16 @@ const CategoryCard = ({ data }) => {
 
   const { user } = useContext(AuthContext);
 
+  const handleBooking = (e) => {
+    e.preventDefault();
+    const form = e.targer;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const location = form.location.value;
+    alert(name, email, phone, location);
+  };
+
   return (
     <div>
       <h1>Category {category} books </h1>
@@ -42,9 +52,23 @@ const CategoryCard = ({ data }) => {
           </Modal.Header>
           <Modal.Body>
             <Modal.Title>Price: $ {price}</Modal.Title>
-            <Modal.Title>Buyer name: {user.displayName}</Modal.Title>
-            <Modal.Title>Buyer name: {user.email}</Modal.Title>
-            <Form>
+            <Form onSubmit={handleBooking}>
+              <Form.Group className="mb-3 ">
+                <Form.Control
+                  disabled
+                  name="name"
+                  type="text"
+                  value={user.displayName}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3 ">
+                <Form.Control
+                  disabled
+                  name="email"
+                  type="text"
+                  value={user.email}
+                />
+              </Form.Group>
               <Form.Group className="mb-3 ">
                 <Form.Control
                   name="phone"
@@ -56,22 +80,18 @@ const CategoryCard = ({ data }) => {
               <Form.Group className="mb-3">
                 <Form.Control
                   name="location"
-                  type="test"
+                  type="text"
                   placeholder="Enter meeting location"
                   required
                 />
+                <Button variant="primary">Submit</Button>
               </Form.Group>
-
-              <Form.Text className="text-danger"></Form.Text>
             </Form>
           </Modal.Body>
 
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Book now
             </Button>
           </Modal.Footer>
         </Modal>
