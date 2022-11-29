@@ -29,7 +29,7 @@ const Seller = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td> {i - 1} </td>
+                    <td> {i} </td>
                     <td> {user.name} </td>
                     <td> {user.email} </td>
                     <td>@mdo</td>

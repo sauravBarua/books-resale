@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card, Table } from "react-bootstrap";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 
 const MyProducts = () => {
@@ -22,10 +22,47 @@ const MyProducts = () => {
     },
   });
 
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Are you sure, you want to delete!");
+    if (proceed) {
+      fetch(`http://localhost:5000/categories/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+    }
+  };
+
   return (
     <div>
-      {user?.email &&
-        categories.map((category, i) => <p> {category.title} </p>)}
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {user?.email &&
+            categories.map((category, i) => (
+              <tr key={category._id}>
+                <td> {i+1} </td>
+                <td> {category.title} </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(category._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
     </div>
   );
 };

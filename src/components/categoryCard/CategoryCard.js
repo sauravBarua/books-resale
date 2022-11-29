@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Button, Card, Form, InputGroup, Modal } from "react-bootstrap";
+import { Button, Card, Form, Modal } from "react-bootstrap";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 
 const CategoryCard = ({ data }) => {
   const { img, title, price, condition, mobile, location, category, desc } =
     data;
+
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
@@ -19,7 +20,7 @@ const CategoryCard = ({ data }) => {
     const email = form.email.value;
     const phone = form.phone.value;
     const location = form.location.value;
-    alert(name, email, phone, location);
+    console.log(name, email, phone, location);
   };
 
   return (
@@ -55,15 +56,15 @@ const CategoryCard = ({ data }) => {
             <Form onSubmit={handleBooking}>
               <Form.Group className="mb-3 ">
                 <Form.Control
-                  disabled
                   name="name"
                   type="text"
+                  readOnly
                   value={user.displayName}
                 />
               </Form.Group>
               <Form.Group className="mb-3 ">
                 <Form.Control
-                  disabled
+                  readOnly
                   name="email"
                   type="text"
                   value={user.email}
@@ -84,8 +85,8 @@ const CategoryCard = ({ data }) => {
                   placeholder="Enter meeting location"
                   required
                 />
-                <Button variant="primary">Submit</Button>
               </Form.Group>
+              <Button variant="primary">Submit</Button>
             </Form>
           </Modal.Body>
 
