@@ -1,17 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Card, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
+import Advertised from "../advertised/Advertised";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
-  const [products, setProducts] = useState([]);
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/users?email=${user?.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setProducts(data));
-  // }, [user?.email]);
+  const [products, setProducts] = useState("");
 
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["categories"],
@@ -36,7 +32,9 @@ const MyProducts = () => {
     }
   };
 
-  const handleAd = () => {};
+  const handleAd = (id) => {
+    setProducts(id);
+  };
 
   return (
     <div>
@@ -56,10 +54,12 @@ const MyProducts = () => {
                 <td> {i + 1} </td>
                 <td> {category.title} </td>
                 <td>
-                  {" "}
-                  <button onClick={handleAd} className="btn btn-primary">
+                  <button
+                    onClick={() => handleAd(category._id)}
+                    className="btn btn-primary"
+                  >
                     Submit
-                  </button>{" "}
+                  </button>
                 </td>
                 <td>
                   <button
@@ -73,6 +73,7 @@ const MyProducts = () => {
             ))}
         </tbody>
       </Table>
+      <Advertised products={products}></Advertised>
     </div>
   );
 };

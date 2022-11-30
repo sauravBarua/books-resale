@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { CardGroup } from "react-bootstrap";
+import { useLoaderData } from "react-router-dom";
+import CategoriesCard from "../../components/categoriesCard/CategoriesCard";
 
-const Advertised = () => {
+const Advertised = ({ products }) => {
+  const categories = useLoaderData();
 
-    const [ad, setAd] = useState()
+  console.log(categories);
 
-    return (
-        <div>
-            <h1>Advertised</h1>
-        </div>
-    );
+  return (
+    <div>
+      {/* <CardGroup>
+        {categories.map((category) => (
+          <CategoriesCard
+            key={category.id}
+            category={category}
+          ></CategoriesCard>
+        ))}
+      </CardGroup> */}
+    </div>
+  );
 };
 
 export default Advertised;

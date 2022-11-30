@@ -11,7 +11,7 @@ const CategoryCard = ({ data }) => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
   const handleBooking = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const CategoryCard = ({ data }) => {
       <Card
         style={{
           width: "359px",
-          height: "700px",
+          height: "690px",
           margin: "10px",
           position: "relative",
         }}
@@ -45,19 +45,18 @@ const CategoryCard = ({ data }) => {
             src={img}
           />
 
-          <Card.Title> Seller's name: {} </Card.Title>
+          {/* <Card.Title> Seller's name: {} </Card.Title> */}
 
           <Card.Title> {title} </Card.Title>
-          <Card.Title> Price: $ {price} </Card.Title>
-          <Card.Title> Condition: {condition} </Card.Title>
-          <Card.Title> Location: {location} </Card.Title>
-
-          <Card.Title>Mobile: {mobile} </Card.Title>
-          <Card.Title> Category: {category} </Card.Title>
+          <Card.Text> Price: $ {price} </Card.Text>
+          <Card.Text> Condition: {condition} </Card.Text>
+          <Card.Text> Location: {location} </Card.Text>
+          <Card.Text>Mobile: {mobile} </Card.Text>
+          <Card.Text> Category: {category} </Card.Text>
 
           {/* <Card.Text>{desc}</Card.Text> */}
           <Button
-            style={{ position: "absolute", bottom: "7px" }}
+            style={{ position: "absolute", bottom: "0" }}
             variant="primary"
             onClick={handleShow}
           >
@@ -73,22 +72,22 @@ const CategoryCard = ({ data }) => {
           <Modal.Body>
             <Modal.Title>Price: $ {price}</Modal.Title>
             <Form onSubmit={handleBooking}>
-              <Form.Group className="mb-3 ">
+              {/* <Form.Group className="mb-3 ">
                 <Form.Control
                   name="name"
                   type="text"
                   readOnly
                   value={user.displayName}
                 />
-              </Form.Group>
-              <Form.Group className="mb-3 ">
+              </Form.Group> */}
+              {/* <Form.Group className="mb-3 ">
                 <Form.Control
                   readOnly
                   name="email"
                   type="text"
                   value={user.email}
                 />
-              </Form.Group>
+              </Form.Group> */}
               <Form.Group className="mb-3 ">
                 <Form.Control
                   name="phone"

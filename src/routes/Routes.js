@@ -3,12 +3,13 @@ import AddProduct from "../components/addProduct/AddProduct";
 import DashboardLayout from "../layout/dashboardLayout/DashboardLayout";
 import Home from "../layout/home/Home";
 import Main from "../layout/main/Main";
+import Advertised from "../pages/advertised/Advertised";
 import Blog from "../pages/blog/Blog";
 import Buyer from "../pages/buyer/Buyer";
 import Category from "../pages/category/Category";
 import CategoryPage from "../pages/categoryPage/CategoryPage";
-import Dashboard from "../pages/dashboard/Dashboard";
 import Login from "../pages/login/Login";
+import MyOrders from "../pages/myOrders/MyOrders";
 import MyProducts from "../pages/myProducts/MyProducts";
 import Seller from "../pages/seller/Seller";
 import Signup from "../pages/signup/Signup";
@@ -44,6 +45,10 @@ export const routes = createBrowserRouter([
         element: <CategoryPage></CategoryPage>,
       },
       {
+        path: "/myorders",
+        element: <MyOrders></MyOrders>,
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
@@ -59,6 +64,18 @@ export const routes = createBrowserRouter([
             <MyProducts></MyProducts>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/advertised/:id",
+
+        element: (
+          <PrivateRoute>
+            <Advertised></Advertised>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => {
+          fetch(`http://localhost:5000//categories/${params._id}`);
+        },
       },
     ],
   },
