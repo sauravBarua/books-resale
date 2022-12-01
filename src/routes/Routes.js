@@ -64,15 +64,6 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      // {
-      //   path: "/categories/:id",
-
-      //   element: (
-      //     <PrivateRoute>
-      //       <AdvertisementModal></AdvertisementModal>
-      //     </PrivateRoute>
-      //   ),
-      // },
     ],
   },
   {

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 
 const AdvertisementModal = ({ id, show, handleClose, data }) => {
-  // console.log(id);
   const [ads, setads] = useState([]);
 
   const handleAd = (e) => {
@@ -36,10 +35,9 @@ const AdvertisementModal = ({ id, show, handleClose, data }) => {
     <>
       <Modal show={show} onHide={handleClose}>
         <Form onSubmit={handleAd}>
-          {/* <input n /> */}
           <InputGroup className="mb-3">
             <Form.Control
-              ame="title"
+              name="title"
               type="text"
               defaultValue={data.title}
               readOnly

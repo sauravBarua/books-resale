@@ -21,7 +21,6 @@ const NavbarContainer = () => {
     },
   });
 
-  console.log(`I am query:${users}`);
   //http://localhost:5000/users?email=seller@seller.com&role=seller
 
   // useEffect(() => {
