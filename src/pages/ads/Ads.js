@@ -13,10 +13,17 @@ const Ads = () => {
     },
   });
   return (
-    <div>
-      <h1>ads</h1>
+    <div
+      style={{
+        display: "flex",
+        margin: "10px",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        // width: "100%",
+      }}
+    >
       {ads.map((ad) => (
-        <p key={ad.id}>Ad: {ad.title} </p>
+        <AdsCards key={ad.id} ad={ad}></AdsCards>
       ))}
     </div>
   );

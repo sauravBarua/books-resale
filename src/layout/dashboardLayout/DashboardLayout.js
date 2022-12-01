@@ -2,7 +2,6 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 import NavbarContainer from "../../components/navbar/NavbarContainer";
-import Footer from "../../shared/footer/Footer";
 
 const DashboardLayout = () => {
   return (
@@ -35,7 +34,6 @@ const DashboardLayout = () => {
           <Row className="flex-xl-nowrap">
             <Col xs={12} sm={4} md={3} lg={2} />
             <Col xs={12} sm={8} md={9} lg={10}>
-              {/* <Product /> */}
               <Outlet></Outlet>
             </Col>
           </Row>
