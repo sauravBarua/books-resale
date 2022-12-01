@@ -7,7 +7,7 @@ import Advertisement from "../advertisement/Advertisement";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
-  const [adId, setAdOd] = useState(null);
+  const [id, setId] = useState(null);
   const [show, setShow] = useState(false);
 
   const { data: categories = [], refetch } = useQuery({
@@ -34,7 +34,7 @@ const MyProducts = () => {
   };
 
   const handleAd = (id) => {
-    setAdOd(id);
+    setId(id);
   };
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -42,7 +42,7 @@ const MyProducts = () => {
   return (
     <div>
       <Advertisement
-        adId={adId}
+        id={id}
         show={show}
         handleClose={handleClose}
       ></Advertisement>
