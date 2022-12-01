@@ -1,14 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Card, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
-import Advertisement from "../advertisement/Advertisement";
+import AdvertisementModal from "../advertisement/AdvertisementModal";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
   const [id, setId] = useState(null);
   const [show, setShow] = useState(false);
+  const [data, setData] = useState("");
+
 
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["categories"],
@@ -33,7 +36,14 @@ const MyProducts = () => {
     }
   };
 
+  useEffect(() => {
+    axios.get(`http://localhost:5000/categories/${id}`).then((res) => {
+      setData(res.data);
+    });
+  }, [id]);
+
   const handleAd = (id) => {
+    console.log(id);
     setId(id);
   };
   const handleShow = () => setShow(true);
@@ -41,11 +51,12 @@ const MyProducts = () => {
 
   return (
     <div>
-      <Advertisement
+      <AdvertisementModal
+        data={data}
         id={id}
         show={show}
         handleClose={handleClose}
-      ></Advertisement>
+      ></AdvertisementModal>
       <Table striped bordered hover>
         <thead>
           <tr>
