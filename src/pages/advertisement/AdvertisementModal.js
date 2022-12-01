@@ -13,53 +13,45 @@ const AdvertisementModal = ({ id, show, handleClose, data }) => {
     const id = form.id.value;
     const ad = { title, img, id };
     console.log(ad);
-
-    // fetch("http://localhost:5000/advertisements", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(ad),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     const newAd = [...ads, data];
-    //     setads(newAd);
-    //     alert("Add Ad");
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
   };
   return (
     <>
       <Modal show={show} onHide={handleClose}>
-        <Form onSubmit={handleAd}>
-          <Form.Group className="mb-3 ">
-            <Form.Control name="img" type="text" readOnly value={data.img} />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Control
-              name="title"
-              type="text"
-              readOnly
-              value={data.title}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Control name="id" type="text" readOnly value={id} />
-          </Form.Group>
-
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save
-            </Button>
-          </Modal.Footer>
-        </Form>
+        <form onSubmit={handleAd} className="grid grid-cols-1 gap-3 mt-10">
+          <input
+            type="text"
+            disabled
+            // value={date}
+            className="input w-full input-bordered "
+          />
+          {/* <select name="slot" className="select select-bordered w-full">
+            {slots.map((slot, i) => (
+              <option value={slot} key={i}>
+                {slot}
+              </option>
+            ))}
+          </select> */}
+          <input
+            name="title"
+            type="text"
+            defaultValue={data.title}
+            disabled
+            placeholder="Your Name"
+          />
+          <input
+            name="img"
+            type="email"
+            defaultValue={data.img}
+            disabled
+            className="input w-full input-bordered"
+          />
+          <input name="id" type="text" defaultValue={id} />
+          <br />
+          <input
+            type="submit"
+            value="Submit"
+          />
+        </form>
       </Modal>
     </>
   );

@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Card, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
 import AdvertisementModal from "../advertisement/AdvertisementModal";
 
@@ -11,7 +10,6 @@ const MyProducts = () => {
   const [id, setId] = useState(null);
   const [show, setShow] = useState(false);
   const [data, setData] = useState("");
-
 
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["categories"],
