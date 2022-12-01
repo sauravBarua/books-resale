@@ -54,72 +54,13 @@ const NavbarContainer = () => {
             >
               Category
             </Link>
-            {/* <Link className="link" style={{ textDecoration: "none" }} to="/">
-              Home
-            </Link>
-
-            <Link
-              className="link"
-              style={{ textDecoration: "none" }}
-              to="/categorypage"
-            >
-              Category
-            </Link>
-
             <Link
               className="link"
               style={{ textDecoration: "none" }}
               to="/blog"
             >
               Blog
-            </Link> */}
-            {/* {users.map((data) =>
-              data.email === user.email && data.role === "admin" ? (
-                <Link
-                  className="link"
-                  style={{ textDecoration: "none" }}
-                  to="/dashboard"
-                >
-                  Dashbord
-                </Link>
-              ) : (
-                <Link
-                  className="link"
-                  style={{ textDecoration: "none" }}
-                  to="/product"
-                >
-                  Add product
-                </Link>
-              )
-            )} */}
-
-            {/* {user?.email === "admin@admin.com" && (
-              <Link
-                className="link"
-                style={{ textDecoration: "none" }}
-                to="/dashboard"
-              >
-                Dashbord
-              </Link>
-            )} */}
-            {/* {user?.email && (
-              <>
-                <Link
-                  className="link"
-                  style={{ textDecoration: "none" }}
-                  to="/product"
-                >
-                  Add product
-                </Link>
-                <Link
-                  className="link"
-                  style={{ textDecoration: "none" }}
-                  to="/myproducts"
-                >
-                  My Products
-                </Link>
-              </>
-            )} */}
+            </Link>
           </Nav>
           <Nav className="me-auto">
             {user?.uid ? (
@@ -174,13 +115,6 @@ const NavbarContainer = () => {
               </>
             ) : (
               <>
-                <Link
-                  className="link"
-                  style={{ textDecoration: "none" }}
-                  to="/blog"
-                >
-                  Blog
-                </Link>
                 <Link
                   className="link"
                   style={{ textDecoration: "none" }}

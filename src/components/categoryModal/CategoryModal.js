@@ -1,25 +1,53 @@
-// import React from "react";
-// import { Button, Modal } from "react-bootstrap";
+import React from "react";
+import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 
-// const CategoryModal = () => {
-//   return (
-//     <div>
-//       <Modal show={show} onHide={handleClose}>
-//         <Modal.Header closeButton>
-//           <Modal.Title>Modal heading</Modal.Title>
-//         </Modal.Header>
-//         <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-//         <Modal.Footer>
-//           <Button variant="secondary" onClick={handleClose}>
-//             Close
-//           </Button>
-//           <Button variant="primary" onClick={handleClose}>
-//             Save Changes
-//           </Button>
-//         </Modal.Footer>
-//       </Modal>
-//     </div>
-//   );
-// };
+const CategoryModal = ({ data, show, handleClose }) => {
+  console.log(data.title);
 
-// export default CategoryModal;
+  const handleBooking = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const price = form.price.value;
+    const booking = { title, price };
+    console.log(booking);
+  };
+  return (
+    <>
+      <Modal show={show} onHide={handleClose}>
+        <Form onSubmit={handleBooking}>
+          <InputGroup className="mb-3">
+            <Form.Control
+              name="title"
+              type="text"
+              defaultValue={data.title}
+              readOnly
+            />
+          </InputGroup>
+          <InputGroup className="mb-3">
+            <Form.Control
+              name="price"
+              type="text"
+              defaultValue={data.price}
+              readOnly
+            />
+          </InputGroup>
+          <InputGroup className="mb-3">
+            {/* <Form.Control name="id" type="text" defaultValue={id} readOnly /> */}
+          </InputGroup>
+          <Modal.Footer>
+            <Button onClick={handleClose} variant="secondary">
+              Close
+            </Button>
+
+            <Button onClick={handleClose} variant="primary" type="submit">
+              Submit
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
+    </>
+  );
+};
+
+export default CategoryModal;
