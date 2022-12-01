@@ -10,9 +10,27 @@ const AdvertisementModal = ({ id, show, handleClose, data }) => {
     const form = e.target;
     const title = form.title.value;
     const img = form.img.value;
-    const id = form.id.value;
-    const ad = { title, img, id };
+    const ad_id = form.id.value;
+    const ad = { title, img, ad_id };
     console.log(ad);
+
+    fetch("http://localhost:5000/ads", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(ad),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const newAd = [...ads, data];
+        setads(newAd);
+        alert("Add Ad");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
   return (
     <>
