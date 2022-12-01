@@ -1,13 +1,18 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 
 const Advertisement = ({ id, show, handleClose }) => {
-  console.log(id);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/categories/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/categories/${id}`)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    axios.get(`http://localhost:5000/categories/${id}`).then((res) => {
+      console.log(res.data);
+    });
   }, [id]);
   return (
     <>
