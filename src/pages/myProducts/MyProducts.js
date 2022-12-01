@@ -3,11 +3,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button, Card, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
-import Advertised from "../advertised/Advertised";
+import Advertisement from "../advertisement/Advertisement";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
-  const [products, setProducts] = useState("");
+  const [adId, setAdOd] = useState(null);
+  const [show, setShow] = useState(false);
 
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["categories"],
@@ -33,11 +34,18 @@ const MyProducts = () => {
   };
 
   const handleAd = (id) => {
-    setProducts(id);
+    setAdOd(id);
   };
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   return (
     <div>
+      <Advertisement
+        adId={adId}
+        show={show}
+        handleClose={handleClose}
+      ></Advertisement>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -55,7 +63,10 @@ const MyProducts = () => {
                 <td> {category.title} </td>
                 <td>
                   <button
-                    onClick={() => handleAd(category._id)}
+                    onClick={() => {
+                      handleShow();
+                      handleAd(category._id);
+                    }}
                     className="btn btn-primary"
                   >
                     Submit
@@ -73,7 +84,6 @@ const MyProducts = () => {
             ))}
         </tbody>
       </Table>
-      <Advertised products={products}></Advertised>
     </div>
   );
 };

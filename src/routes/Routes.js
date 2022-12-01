@@ -3,7 +3,7 @@ import AddProduct from "../components/addProduct/AddProduct";
 import DashboardLayout from "../layout/dashboardLayout/DashboardLayout";
 import Home from "../layout/home/Home";
 import Main from "../layout/main/Main";
-import Advertised from "../pages/advertised/Advertised";
+import Advertisement from "../pages/advertisement/Advertisement";
 import Blog from "../pages/blog/Blog";
 import Buyer from "../pages/buyer/Buyer";
 import Category from "../pages/category/Category";
@@ -66,16 +66,16 @@ export const routes = createBrowserRouter([
         ),
       },
       {
-        path: "/advertised/:id",
+        path: "/categories/:id",
 
         element: (
           <PrivateRoute>
-            <Advertised></Advertised>
+            <Advertisement></Advertisement>
           </PrivateRoute>
         ),
-        loader: ({ params }) => {
-          fetch(`http://localhost:5000//categories/${params._id}`);
-        },
+        // loader: ({ params }) => {
+        //   fetch(`http://localhost:5000//categories/${params._id}`);
+        // },
       },
     ],
   },
