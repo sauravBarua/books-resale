@@ -38,9 +38,18 @@ const NavbarContainer = () => {
   };
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar
+      style={{ boxShadow: "0 2px 4px 0 rgba(0,0,0,.2)" }}
+      bg="light"
+      expand="lg"
+    >
       <Container>
-        <Navbar.Brand href="/">Books’n’Things</Navbar.Brand>
+        <Navbar.Brand
+          style={{ color: "#C0562A", fontWeight: "bold", fontSize: "2.5em" }}
+          href="/"
+        >
+          Books’n’Things
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
