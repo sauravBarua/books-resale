@@ -74,7 +74,7 @@ const CategoryCard = ({ data }) => {
             }}
             className="btn btn-primary"
           >
-            Submit
+            Book now
           </button>
         </Card.Body>
       </Card>

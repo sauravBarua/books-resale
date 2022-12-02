@@ -1,7 +1,11 @@
 adminEmail: admin@admin.com
 adminPassword: 123456
 
+sellerEmail:seller@seller.com
+sellerPassord:123456
 
+buyerEmail:buyer@buyer.com
+buyerPassword:123456
 
 # Getting Started with Create React App
 

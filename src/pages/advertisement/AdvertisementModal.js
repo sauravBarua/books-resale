@@ -13,7 +13,7 @@ const AdvertisementModal = ({ id, show, handleClose, data }) => {
     const ad = { title, img, ad_id };
     console.log(ad);
 
-    fetch("http://localhost:5000/ads", {
+    fetch("https://roducts-resale-server.vercel.app/ads", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

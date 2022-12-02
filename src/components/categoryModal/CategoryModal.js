@@ -16,7 +16,7 @@ const CategoryModal = ({ data, show, handleClose }) => {
     const location = form.location.value;
     const booking = { title,email, price, phone, location };
     console.log(booking);
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://roducts-resale-server.vercel.app/bookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

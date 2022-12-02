@@ -14,7 +14,7 @@ const MyProducts = () => {
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/categories");
+      const res = await fetch("https://roducts-resale-server.vercel.app/categories");
       const data = await res.json();
       return data;
     },
@@ -23,7 +23,7 @@ const MyProducts = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure, you want to delete!");
     if (proceed) {
-      fetch(`http://localhost:5000/categories/${id}`, {
+      fetch(`https://roducts-resale-server.vercel.app/categories/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -35,7 +35,7 @@ const MyProducts = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/categories/${id}`).then((res) => {
+    axios.get(`https://roducts-resale-server.vercel.app/categories/${id}`).then((res) => {
       setData(res.data);
     });
   }, [id]);
@@ -67,7 +67,7 @@ const MyProducts = () => {
         <tbody>
           {user?.email &&
             categories.map((category, i) => (
-              <tr key={category._id}>
+              <tr key={category.id}>
                 <td> {i + 1} </td>
                 <td> {category.title} </td>
                 <td>
