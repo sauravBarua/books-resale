@@ -37,7 +37,12 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/Category",
-        element: <Category></Category>,
+
+        element: (
+          <PrivateRoute>
+            <Category></Category>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/categorypage",
