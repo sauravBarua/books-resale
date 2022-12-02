@@ -14,7 +14,7 @@ const Quotes = () => {
 
         setTrack(json);
 
-        repeat = setTimeout(fetchData, 10000); // request again after a minute
+        repeat = setTimeout(fetchData, 5000); // request again after a minute
       } catch (error) {
         console.error(error.message);
       }

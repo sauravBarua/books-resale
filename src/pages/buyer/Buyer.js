@@ -3,7 +3,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 
 const Buyer = () => {
-  const { data: users = [],refetch } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch("https://roducts-resale-server.vercel.app/users");
@@ -21,7 +21,7 @@ const Buyer = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          refetch()
+          refetch();
         });
     }
   };
@@ -60,32 +60,6 @@ const Buyer = () => {
           )}
         </tbody>
       </Table>
-
-      {/* {users.map(
-        (user, i) =>
-          user.role === "buyer" && (
-            <div key={i}>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> {i-1} </td>
-                    <td> {user.name} </td>
-                    <td> {user.email} </td>
-                    <td>@mdo</td>
-                  </tr>
-                </tbody>
-              </Table>
-            </div>
-          )
-      )} */}
     </div>
   );
 };

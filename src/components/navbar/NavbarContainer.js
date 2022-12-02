@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authProvider/AuthProvider";
@@ -10,8 +10,6 @@ const NavbarContainer = () => {
 
   const navigate = useNavigate();
 
-  // const [users, setUsers] = useState([]);
-
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
@@ -20,14 +18,6 @@ const NavbarContainer = () => {
       return data;
     },
   });
-
-  //http://localhost:5000/users?email=seller@seller.com&role=seller
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/users?email=${user.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(`I am effect:${data}`));
-  // }, []);
 
   const handleLogout = () => {
     logOut()

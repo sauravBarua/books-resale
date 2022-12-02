@@ -7,7 +7,7 @@ const Header = () => {
     <div>
       <NavbarContainer></NavbarContainer>
       <div className="header">
-        <div className="headerLink">Frame Fusion</div>
+        <h3>Millions of classified ads and as many opportunities to have joy.</h3>
       </div>
     </div>
   );

@@ -31,7 +31,6 @@ const AdsCards = ({ ad }) => {
         />
         <Card.Body>
           <Card.Title> {title} </Card.Title>
-          {/* <Button variant="primary">Go somewhere</Button> */}
         </Card.Body>
       </Card>
     </div>

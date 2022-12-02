@@ -1,14 +1,7 @@
 .header {
-  padding: 35px;
+  padding: 70px;
   text-align: center;
-  background: rgb(246, 247, 249);
-  color: #3f4342;
+  color:black;
   font-size: 45px;
-  font-family: "Sofia", sans-serif;
-  text-shadow: 3px 3px 3px #ababab;
 }
 
-.headerLink {
-  text-decoration: none;
-  color: white;
-}
