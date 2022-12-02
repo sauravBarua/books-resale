@@ -3,10 +3,9 @@ import Ads from "../../pages/ads/Ads";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <div style={{ marginTop: "10px" }}>
+      <h4>Advertisement</h4>
       <Ads></Ads>
-      
     </div>
   );
 };
